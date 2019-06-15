@@ -63,19 +63,19 @@ struct lazy_segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    void upd(int id, int l, int r, int i, int val){
-        if (i < l || r < i){
+    void upd(int id, int l, int r, int u, int v, int val){
+        if (v < l || r < u){
             return;
         }
-        if (l == r){
-            seg[id] += val;
+        if (u <= l && r <= v){
+            seg[id] += (r - l + 1) * val;
             lazy[id] += val;
             return;
         }
         down(id, l, r);
         int mid = (l + r) >> 1;
-        upd(id << 1, l, mid, i, val);
-        upd(id << 1 | 1, mid + 1, r, i, val);
+        upd(id << 1, l, mid, u, v, val);
+        upd(id << 1 | 1, mid + 1, r, u, v, val);
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
