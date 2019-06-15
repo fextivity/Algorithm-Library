@@ -1,5 +1,5 @@
 int n;
-int h[N];
+int dist[N];
 vpii adj[N]; // fi : node label, se: edge weight
 
 // Complexity : O(ElogE)
