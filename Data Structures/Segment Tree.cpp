@@ -69,6 +69,7 @@ struct lazy_segment_tree{ // Sum query
         }
         if (l == r){
             seg[id] += val;
+            lazy[id] += val;
             return;
         }
         down(id, l, r);
