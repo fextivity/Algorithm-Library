@@ -2,6 +2,7 @@ int n;
 vi adj[N];
 bool ck[N];
 
+// Complexity: O(V)
 void dfs(int u){
     ck[u] = 1;
     Fora(v, adj[u]){
@@ -9,6 +10,7 @@ void dfs(int u){
     }
 }
 
+// Complexity: O(V)
 void bfs(int u){
     queue <int> qu;
     qu.push(u);
