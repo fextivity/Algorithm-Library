@@ -1,3 +1,4 @@
+int n;
 int a[N];
 
 struct segment_tree{ // Sum query
