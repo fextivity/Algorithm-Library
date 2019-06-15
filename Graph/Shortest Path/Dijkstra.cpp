@@ -2,6 +2,8 @@ int n;
 int h[N];
 vpii adj[N]; // fi : node label, se: edge weight
 
+// Complexity : O(ElogE)
+
 void dijkstra(int u){
     pque <pii, vpii, greater <pii > > pq;
     mmset(h);
