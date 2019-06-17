@@ -1,4 +1,3 @@
-int n;
 vi adj[N];
 bool ck[N];
 
