@@ -3,7 +3,7 @@ int dist[N];
 vpii adj[N]; // fi : node label, se: edge weight
 
 // Find minimum distance from node u to all other nodes
-// Complexity : O(ElogE)
+// Complexity: O(ElogE)
 void dijkstra(int u){
     pque <pii, vpii, greater <pii > > pq;
     mmset(h);
