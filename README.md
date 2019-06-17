@@ -1,1 +1,1 @@
-# Algorithm-Library
+# Algorithm Library
