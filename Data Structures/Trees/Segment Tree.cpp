@@ -14,7 +14,7 @@ struct segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    void upd(int id, int l, int r, int i, int val){ // Add val to a[i]
+    void update(int id, int l, int r, int i, int val){ // Add val to a[i]
         if (i < l || r < i){
             return;
         }
@@ -63,7 +63,7 @@ struct lazy_segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    void upd(int id, int l, int r, int u, int v, int val){ // Add val to a[i] : u <= i <= v
+    void update(int id, int l, int r, int u, int v, int val){ // Add val to a[i] : u <= i <= v
         if (v < l || r < u){
             return;
         }
