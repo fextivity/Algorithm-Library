@@ -14,3 +14,5 @@ void merge(int x, int y){
     par[x] += par[y];
     par[y] = x;
 }
+
+msetn1(par);
