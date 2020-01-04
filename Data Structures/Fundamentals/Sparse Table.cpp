@@ -1,4 +1,4 @@
-const int N = 1e5 = 5, K = log2(N) + 2;
+const int N = 1e5 + 5, K = log2(N) + 2;
 
 int n;
 int a[N];
