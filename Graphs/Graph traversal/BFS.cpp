@@ -1,7 +1,6 @@
 vi adj[N];
 bool ck[N];
 
-// Complexity: O(V)
 void bfs(int u){
     queue <int> qu;
     qu.push(u);
