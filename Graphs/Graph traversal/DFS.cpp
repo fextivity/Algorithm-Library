@@ -9,3 +9,11 @@ void dfs(int u){
         }
     }
 }
+
+void dfs(int u, int p){
+    Fora(v, adj[u]){
+        if (v != p){
+            dfs(v, u);
+        }
+    }
+}
