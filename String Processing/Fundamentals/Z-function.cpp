@@ -4,7 +4,7 @@ int z[N];
 
 void z_function(){
     s = ' ' + s;
-    Z[1] = 0;
+    z[1] = 0;
     int l = 0, r = 0;
     ForE(i, 2, n){
         if (r < i){
