@@ -13,20 +13,20 @@ void z_function(){
             while (r <= n && s[r] == s[r - l + 1]){
                 r++;
             }
-            Z[i] = r - l;
+            z[i] = r - l;
             r--;
         }
         else{
             int k = i - l + 1;
-            if (Z[k] < r - i){
-                Z[i] = Z[k];
+            if (z[k] < r - i){
+                z[i] = z[k];
             }
             else{
                 l = i;
                 while (r <= n && s[r] == s[r - l + 1]){
                     r++;
                 }
-                Z[i] = r - l;
+                z[i] = r - l;
                 r--;
             }
         }
