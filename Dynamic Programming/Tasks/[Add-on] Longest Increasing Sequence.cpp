@@ -11,7 +11,7 @@ int lis(){
             b[idx] = a[i];
             continue;
         }
-        int itr = lwb(b + 1, b + 1 + idx, a[i]) - b;
+        int itr = upb(b + 1, b + 1 + idx, a[i]) - b;
         b[itr] = a[i];
     }
     return idx;
