@@ -1,5 +1,6 @@
 int n;
-vector <int> lpf(n + 1, 0), prime;
+int lpf[N];
+vector <int> prime;
 
 void sieve(){
     for (int i = 2; i <= n; i++){
