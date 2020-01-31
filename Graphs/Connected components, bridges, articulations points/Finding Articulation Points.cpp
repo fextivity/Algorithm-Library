@@ -5,7 +5,7 @@ bool ck[N], iscutpoint[N];
 int tim;
 
 void dfs(int u, int p){
-    ck[u] = 1;
+    ck[u] = true;
     tin[u] = tim;
     low[u] = tim;
     tim++;
@@ -21,13 +21,13 @@ void dfs(int u, int p){
             dfs(v, u);
             low[u] = min(low[u], low[v]);
             if (low[v] >= tin[u] && p != -1){
-                iscutpoint[u] = 1;
+                iscutpoint[u] = true;
             }
             child++;
         }
     }
     if (p == -1 && child > 1){
-        iscutpoint[u] = 1;
+        iscutpoint[u] = true;
     }
 }
 
