@@ -4,6 +4,7 @@ bool ck[N];
 vi ans;
 
 void dfs(int u){
+    ck[u] = true;
     Fora(v, adj[u]){
         if (!ck[v]){
             dfs(v);
