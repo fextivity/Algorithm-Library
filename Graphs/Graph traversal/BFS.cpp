@@ -8,7 +8,7 @@ void bfs(int u){
     while (!qu.empty()){
         int t = qu.front();
         qu.pop();
-        ck[t] = 1;
+        ck[t] = true;
         Fora(v, adj[t]){
             if (!ck[v]){
                 qu.push(v);
