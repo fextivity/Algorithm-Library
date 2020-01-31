@@ -3,7 +3,7 @@ vi adj[N];
 bool ck[N];
 
 void dfs(int u){
-    ck[u] = 1;
+    ck[u] = true;
     Fora(v, adj[u]){
         if (!ck[v]){
             dfs(v);
