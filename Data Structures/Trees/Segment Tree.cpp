@@ -1,9 +1,9 @@
 int a[N];
 
-struct segment_tree{ // Sum query
+struct segment_tree{
     int seg[4 * N];
     
-    void build(int id, int l, int r){ // Build segment tree
+    void build(int id, int l, int r){
         if (l == r){
             seg[id] = a[l];
             return;
@@ -14,7 +14,7 @@ struct segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    void update(int id, int l, int r, int i, int val){ // Add val to a[i]
+    void update(int id, int l, int r, int i, int val){
         if (i < l || r < i){
             return;
         }
@@ -28,7 +28,7 @@ struct segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    int get(int id, int l, int r, int u, int v){ // Get sum of a[i] : u <= i <= v
+    int get(int id, int l, int r, int u, int v){
         if (v < l || r < u){
             return 0;
         }
@@ -40,10 +40,10 @@ struct segment_tree{ // Sum query
     }
 } it1;
 
-struct lazy_segment_tree{ // Sum query
+struct lazy_segment_tree{
     int seg[4 * N], lazy[4 * N];
     
-    void down(int id, int l, int r){ // "Push" lazy value down
+    void down(int id, int l, int r){
         int mid = (l + r) >> 1;
         lazy[id << 1] += lazy[id];
         lazy[id << 1 | 1] += lazy[id];
@@ -52,7 +52,7 @@ struct lazy_segment_tree{ // Sum query
         lazy[id] = 0;
     }
     
-    void build(int id, int l, int r){ // Build lazy segment tree
+    void build(int id, int l, int r){
         if (l == r){
             seg[id] = a[l];
             return;
@@ -63,7 +63,7 @@ struct lazy_segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    void update(int id, int l, int r, int u, int v, int val){ // Add val to a[i] : u <= i <= v
+    void update(int id, int l, int r, int u, int v, int val){
         if (v < l || r < u){
             return;
         }
@@ -79,7 +79,7 @@ struct lazy_segment_tree{ // Sum query
         seg[id] = seg[id << 1] + seg[id << 1 | 1];
     }
     
-    int get(int id, int l, int r, int u, int v){ // Get sum of a[i] : u <= i <= v
+    int get(int id, int l, int r, int u, int v){
         if (v < l || r < u){
             return 0;
         }
