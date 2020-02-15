@@ -1,5 +1,5 @@
 /*
-1. File: Binary Exponentiation.cpp
+1. File: Binary Exponentiation.cpp  Link: https://cp-algorithms.com/algebra/binary-exp.html
 2. Algorithm
 Calculate power (x^y) with arbitrary base (x), exponent (y) and possibly modulo (mod).
 Use Divide and Conquer (D&C).
