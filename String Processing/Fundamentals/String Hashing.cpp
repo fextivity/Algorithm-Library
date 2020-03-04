@@ -2,13 +2,14 @@ const int base = 31;
 
 int n;
 string s;
-pii pw[N], hashs[N];
+pii hashs[N];
+int pw1[N], pw2[N];
 
 void init(){
     s = ' ' + s;
     pw1[0] = 1;
     pw2[0] = 1;
-    ForE(i, 1, n){
+    For(i, 1, N){
         pw1[i] = (pw1[i - 1] * base) % mod1;
         pw2[i] = (pw2[i - 1] * base) % mod2;
     }
