@@ -1,4 +1,4 @@
-struct dsu{
+struct disjoint_set_union{
     int par[N];
     
     void init(){
