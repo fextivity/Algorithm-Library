@@ -4,7 +4,7 @@ struct FenwickTree{
 
     FenwickTree(int n = 0){
         this->n = n + 1;
-        bit.assign(n + 1, 0);
+        bit.assign(this->n + 1, 0);
     }
 
     FenwickTree(vector<int> a) : FenwickTree(a.size()){
@@ -24,6 +24,7 @@ struct FenwickTree{
     }
 
     int sum(int l, int r){
+        
         return sum(r) - sum(l - 1);
     }
 
