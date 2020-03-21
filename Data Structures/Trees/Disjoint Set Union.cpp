@@ -19,7 +19,7 @@ struct disjoint_set_union{
         par[x] += par[y];
         par[y] = x;
     }
-} dsu1;
+} dsu;
 
 
 int par[N];
