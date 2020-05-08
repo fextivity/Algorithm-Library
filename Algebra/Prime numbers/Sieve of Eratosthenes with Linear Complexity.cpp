@@ -1,4 +1,4 @@
-int n;
+
 int lpf[N];
 vector <int> prime;
 
