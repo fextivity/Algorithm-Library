@@ -1,11 +1,11 @@
-ll binpow(ll base, ll e, ll mod){
+ll binpow(ll base, ll e, ll md){
     ll ans = 1;
-    base %= mod;
+    base %= md;
     while (e){
         if (e & 1){
-            ans = (ans * base) % mod;
+            ans = (ans * base) % md;
         }
-        base = (base * base) % mod;
+        base = (base * base) % md;
         e >>= 1;
     }
     return ans;
