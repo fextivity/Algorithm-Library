@@ -23,7 +23,7 @@ bool check_composite(ll n, ll a, ll d, int s){
         }
     }
     return true;
-};
+}
 
 bool Miller_Rabin(ll n){ // Nondeterministic version
     int iter = 20;
