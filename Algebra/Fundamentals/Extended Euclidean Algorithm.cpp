@@ -14,7 +14,7 @@ long long gcd(long long a, long long b, long long &x, long long &y){
         y = 1;
         return b;
     }
-    long long x1, y1, d = __gcd(b % a, a, x1, y1);
+    long long x1, y1, d = gcd(b % a, a, x1, y1);
     x = y1 - (b / a) * x1;
     y = x1;
     return d;
