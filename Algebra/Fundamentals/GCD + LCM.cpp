@@ -1,4 +1,4 @@
-int gcd(int a, int b){
+long long gcd(long long a, long long b){
     while (b){
         a %= b;
         swap(a, b);
@@ -6,6 +6,6 @@ int gcd(int a, int b){
     return a;
 }
 
-int lcm(int a, int b){
-    return a / gcd(a, b) * b;
+long long lcm(long long a, long long b){
+    return a / __gcd(a, b) * b;
 }
