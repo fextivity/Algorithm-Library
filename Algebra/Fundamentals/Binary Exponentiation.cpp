@@ -9,11 +9,11 @@ Useful for general algebra with numbers upto 10^9.
 4. Complexity: O(log(y)).
 */
 
-ll binpow(ll x, ll y){
-    ll ans = 1;
+long long binpow(long long x, long long y){
+    long long ans = 1;
     while (y){
-        if (y & 1) ans = (ans * x) % mod;
-        x = (x * x) % mod;
+        if (y & 1) ans = ans * x % mod;
+        x = x * x % mod;
         y >>= 1;
     }
     return ans;
