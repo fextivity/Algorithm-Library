@@ -1,3 +1,5 @@
+const int S = sqrt(Q) + 1;
+
 ll gilbertOrder(int x, int y, int pow, int rotate) {
     if (pow == 0) {
         return 0;
@@ -24,7 +26,7 @@ struct Query {
     ll ord;
 
     void calcOrder() {
-        ord = gilbertOrder(l, r, 21, 0);
+        ord = gilbertOrder(l, r, S, 0);
     }
 };
 
