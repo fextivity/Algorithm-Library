@@ -1,24 +1,19 @@
-const int S = sqrt(Q) + 1;
+const int S = log2(Q) + 1;
 
-ll gilbertOrder(int x, int y, int pow, int rotate) {
-    if (pow == 0) {
-        return 0;
+ll gilbertOrder(int x, int y){
+    ll d = 0;
+    for (int s = 1 << (S - 1); s; s >>= 1){
+        bool rx = x & s, ry = y & s;
+        d = d << 2 | rx * 3 ^ static_cast<int>(ry);
+        if (!ry){
+            if (rx){
+                x = (1 << S) - x;
+                y = (1 << S) - y;
+            }
+            swap(x, y);
+        }
     }
-    int hpow = 1 << (pow-1);
-    int seg = (x < hpow) ? (
-        (y < hpow) ? 0 : 3
-    ) : (
-        (y < hpow) ? 1 : 2
-    );
-    seg = (seg + rotate) & 3;
-    const int rotateDelta[4] = {3, 0, 0, 1};
-    int nx = x & (x ^ hpow), ny = y & (y ^ hpow);
-    int nrot = (rotate + rotateDelta[seg]) & 3;
-    ll subSquareSize = int64_t(1) << (2*pow - 2);
-    ll ans = seg * subSquareSize;
-    ll add = gilbertOrder(nx, ny, pow-1, nrot);
-    ans += (seg == 1 || seg == 2) ? add : (subSquareSize - add - 1);
-    return ans;
+    return d;
 }
 
 struct Query {
@@ -26,7 +21,7 @@ struct Query {
     ll ord;
 
     void calcOrder() {
-        ord = gilbertOrder(l, r, S, 0);
+        ord = gilbertOrder(l, r);
     }
 };
 
