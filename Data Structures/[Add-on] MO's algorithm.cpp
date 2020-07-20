@@ -15,7 +15,7 @@ ll gilbertOrder(int x, int y, int pow, int rotate) {
 	ll subSquareSize = int64_t(1) << (2*pow - 2);
 	ll ans = seg * subSquareSize;
 	ll add = gilbertOrder(nx, ny, pow-1, nrot);
-	ans += (seg == 1 || seg == 2) ? add : (subSquareSize - add - 1);
+    ans += (seg == 1 || seg == 2) ? add : (subSquareSize - add - 1);
 	return ans;
 }
 
