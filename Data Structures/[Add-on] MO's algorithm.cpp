@@ -18,16 +18,16 @@ ll gilbertOrder(int x, int y, int pow, int rotate) {
 	ans += (seg == 1 || seg == 2) ? add : (subSquareSize - add - 1);
 	return ans;
 }
- 
+
 struct Query {
 	int l, r, idx;
 	ll ord;
- 
+
 	void calcOrder() {
 		ord = gilbertOrder(l, r, 21, 0);
 	}
 };
- 
-inline bool operator<(const Query &a, const Query &b) {
+
+bool operator<(const Query &a, const Query &b) {
 	return a.ord < b.ord;
 }
