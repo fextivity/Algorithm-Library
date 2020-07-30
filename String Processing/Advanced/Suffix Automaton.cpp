@@ -1,3 +1,5 @@
+const int K = 256;
+
 void add(string s);
 int go(int cur, char ch);
 int getlink(int cur);
