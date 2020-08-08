@@ -17,19 +17,18 @@ struct FenwickTree{
 
     int sum(int idx){
         int ans = 0;
-        for (++idx; idx > 0; idx -= idx & -idx){
+        for (; idx > 0; idx -= idx & -idx){
             ans += bit[idx];
         }
         return ans;
     }
 
     int sum(int l, int r){
-        
         return sum(r) - sum(l - 1);
     }
 
     void add(int idx, int delta){
-        for (++idx; idx <= n; idx += idx & -idx){
+        for (; idx <= n; idx += idx & -idx){
             bit[idx] += delta;
         }
     }
