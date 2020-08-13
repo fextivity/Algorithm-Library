@@ -6,7 +6,12 @@ using namespace __gnu_pbds;
 
 // Optimization
 
-//#pragma GCC optimize("O3")
+/*
+#pragma GCC optimize("Ofast, unroll-loops, no-stack-protector")
+#pragma GCC target("avx, avx2, fma")
+#pragma GCC target("sse, sse2, sse3, ssse3, sse4, popcnt, abm, mmx, avx, tune=native")
+#pragma comment(linker, "/stack:200000000")
+*/
 #define endl '\n'
 
 // Shortcut
@@ -36,7 +41,13 @@ using namespace __gnu_pbds;
 #define gl(s) getline(cin, s);
 #define setpre(x) fixed << setprecision(x)
 /*
-#define debug(args...){ string _sDEB = #args; replace(_sDEB.begin(), _sDEB.end(), ',', ' '); stringstream _ssDEB(_sDEB); istream_iterator<string> _itDEB(_ssDEB); DEB(_itDEB, args); }
+#define debug(args...){                                                                     \\
+    string _sDEB = #args;                                                                   \\
+    replace(_sDEB.begin(), _sDEB.end(), ',', ' ');                                          \\
+    stringstream _ssDEB(_sDEB);                                                             \\
+    istream_iterator<string> _itDEB(_ssDEB);                                                \\
+    DEB(_itDEB, args);                                                                      \\
+}
 void DEB(istream_iterator<string> it) {}
 template<typename T, typename... Args>
 void DEB(istream_iterator<string> it, T a, Args... args){
@@ -60,6 +71,21 @@ void DEB(istream_iterator<string> it, T a, Args... args){
 //int randt(int l, int r){ return (rando() % (r - l + 1) + l); }
 
 // Data Structure
+
+// Policy based data structures                                                             \\
+   Support find_by_order(int k): return an iterator to the k-th smallest element,           \\
+                                 counting from 0                                            \\
+           order_of_key(int k): return the number of items strictly smaller than k          \\
+   For ordered_multiset and ordered_multimap, lower_bound() and upper_bound() are swapped
+
+template <typename T> using ordered_set =
+tree <T, null_type, less <T>, rb_tree_tag, tree_order_statistics_node_update>;
+template <typename Key, typename T> using ordered_map =
+tree <Key, T, less <Key>, rb_tree_tag, tree_order_statistics_node_update>;
+template <typename T> using ordered_multiset =
+tree <T, null_type, less_equal <T>, rb_tree_tag, tree_order_statistics_node_update>;
+template <typename Key, typename T> using ordered_multimap =
+tree <Key, T, less_equal <Key>, rb_tree_tag, tree_order_statistics_node_update>;
 
 #define pque priority_queue
 #define mts multiset
