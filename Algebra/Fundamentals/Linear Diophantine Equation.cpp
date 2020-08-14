@@ -1,17 +1,17 @@
-long long gcd(long long a, long long b, long long &x, long long &y){
+long long egcd(long long a, long long b, long long &x, long long &y){
     if (a == 0){
         x = 0; y = 1;
         return b;
     }
     long long x1, y1;
-    long long d = gcd(b % a, a, x1, y1);
+    long long d = egcd(b % a, a, x1, y1);
     x = y1 - (b / a) * x1;
     y = x1;
     return d;
 }
 
 bool find_any_solution(long long a, long long b, long long c, long long &x0, long long &y0, long long &g){
-    g = gcd(abs(a), abs(b), x0, y0);
+    g = egcd(abs(a), abs(b), x0, y0);
     if (c % g) return false;
     x0 *= c / g;
     y0 *= c / g;
