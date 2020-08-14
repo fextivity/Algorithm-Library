@@ -38,7 +38,7 @@ using namespace __gnu_pbds;
 #define PrintA(a, l, r) for (int h13 = l; h13 <= r; h13++) cout << a[h13] << ' '; cout << endl;
 #define PrintAl(a, l, r) for (int h13 = l; h13 <= r; h13++) cout << a[h13] << endl;
 #define Ptest(x) return cout << x, 0;
-#define gl(s) getline(cin, s);
+#define getl(s) getline(cin, s);
 #define setpre(x) fixed << setprecision(x)
 /*
 #define debug(args...){                                                                     \\
