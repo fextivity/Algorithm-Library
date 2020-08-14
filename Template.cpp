@@ -33,10 +33,10 @@ using namespace __gnu_pbds;
 
 // I/O & Debug
 
-#define PrintV(a) Fora(iiii, a) cout << iiii << ' '; cout << endl;
-#define PrintVl(a) Fora(iiii, a) cout << iiii << endl;
-#define PrintA(a, l, r) for (int iiii = l; iiii <= r; iiii++) cout << a[iiii] << ' '; cout << endl;
-#define PrintAl(a, l, r) for (int iiii = l; iiii <= r; iiii++) cout << a[iiii] << endl;
+#define PrintV(a) Fora(h13, a) cout << h13 << ' '; cout << endl;
+#define PrintVl(a) Fora(h13, a) cout << h13 << endl;
+#define PrintA(a, l, r) for (int h13 = l; h13 <= r; h13++) cout << a[h13] << ' '; cout << endl;
+#define PrintAl(a, l, r) for (int h13 = l; h13 <= r; h13++) cout << a[h13] << endl;
 #define Ptest(x) return cout << x, 0;
 #define gl(s) getline(cin, s);
 #define setpre(x) fixed << setprecision(x)
