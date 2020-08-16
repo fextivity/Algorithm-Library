@@ -16,15 +16,15 @@ ll gilbertOrder(int x, int y){
     return d;
 }
 
-struct Query {
+struct Query{
     int l, r, idx;
     ll ord;
 
-    void calcOrder() {
+    void calcOrder(){
         ord = gilbertOrder(l, r);
     }
+    
+    bool operator< (const Query &it) const{
+    	return ord < it.ord;
+	}
 };
-
-bool operator<(const Query &a, const Query &b) {
-    return a.ord < b.ord;
-}
