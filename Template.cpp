@@ -1,3 +1,5 @@
+//#define BITSET64BIT 1
+#ifdef BITSET64BIT
 #include <string>
 #include <bits/functexcept.h>
 #include <iosfwd>
@@ -20,6 +22,7 @@
 #undef unsigned
 #undef __builtin_popcountl
 #undef __builtin_ctzl
+#endif
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
