@@ -1,23 +1,30 @@
-ll binpow(ll base, ll e, ll md){
+ll binmul(ll x, ll y, ll md){
+    ll q = (ld)x * (ld)y / (ld)md;
+    ll ans = (x * y - md * q) % md;
+    if (ans < 0) ans += md;
+    return ans;
+}
+
+ll binpow(ll x, ll y, ll md){
     ll ans = 1;
-    base %= md;
-    while (e){
-        if (e & 1){
-            ans = (ans * base) % md;
+    x %= md;
+    while (y){
+        if (y & 1){
+            ans = binmul(ans, x, md) % md;
         }
-        base = (base * base) % md;
-        e >>= 1;
+        x = binmul(x, x, md) % md;
+        y >>= 1;
     }
     return ans;
 }
 
 bool check_composite(ll n, ll a, ll d, int s){
-    ll x = binpower(a, d, n);
+    ll x = binpow(a, d, n);
     if (x == 1 || x == n - 1){
         return false;
     }
     for (int r = 1; r < s; r++){
-        x = (x * x) % n;
+        x = binmul(x, x, n);
         if (x == n - 1){
             return false;
         }
