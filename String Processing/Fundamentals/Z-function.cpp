@@ -1,9 +1,7 @@
-int n;
-string s;
 int z[N];
 
-void z_function(){
-    s = ' ' + s;
+void z_function(string s){
+    int n = s.length(); s = ' ' + s;
     z[1] = 0;
     int l = 0, r = 0;
     ForE(i, 2, n){
