@@ -20,5 +20,6 @@ void find_cpn(){
         dfs(i);
         PrintV(cpn);
         cout << endl;
+        cpn.clear();
     }
 }
