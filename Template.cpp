@@ -46,7 +46,6 @@ using namespace __gnu_pbds;
 #define eb emplace_back
 #define pb push_back
 #define pob pop_back
-#define mp make_pair
 #define upb upper_bound
 #define lwb lower_bound
 #define fi first
