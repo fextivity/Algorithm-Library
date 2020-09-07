@@ -1,13 +1,13 @@
-struct FenwickTree{
+struct fenwick_tree{
     vi bit;
     int n;
 
-    FenwickTree(int n = 0){
+    fenwick_tree(int n = 0){
         this->n = n + 1;
         bit.assign(this->n + 1, 0);
     }
 
-    FenwickTree(vector<int> a) : FenwickTree(a.size()){
+    fenwick_tree(vector<int> a) : fenwick_tree(a.size()){
         this->n = a.size() + 1;
         bit.assign(n + 1, 0);
         For(i, 0, a.size()){
@@ -34,17 +34,17 @@ struct FenwickTree{
     }
 } bit1;
 
-struct FenwickTree2D{
+struct 2d_fenwick_tree{
     vvi bit;
     int n, m;
 
-    FenwickTree2D(int n = 0, int m = 0){
+    2d_fenwick_tree(int n = 0, int m = 0){
         this->n = n + 1;
         this->m = m + 1;
         bit.assign(this->n + 1, vi(this->m + 1, 0));
     }
 
-    FenwickTree2D(vvi a) : FenwickTree2D(a.size(), a[0].size()){
+    2d_fenwick_tree(vvi a) : 2d_fenwick_tree(a.size(), a[0].size()){
         this->n = a.size() + 1;
         this->m = a[0].size() + 1;
         bit.assign(n + 1, vi(m + 1, 0));
