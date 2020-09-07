@@ -34,17 +34,17 @@ struct fenwick_tree{
     }
 } bit1;
 
-struct 2d_fenwick_tree{
+struct fenwick_tree_2d{
     vvi bit;
     int n, m;
 
-    2d_fenwick_tree(int n = 0, int m = 0){
+    fenwick_tree_2d(int n = 0, int m = 0){
         this->n = n + 1;
         this->m = m + 1;
         bit.assign(this->n + 1, vi(this->m + 1, 0));
     }
 
-    2d_fenwick_tree(vvi a) : 2d_fenwick_tree(a.size(), a[0].size()){
+    fenwick_tree_2d(vvi a) : fenwick_tree_2d(a.size(), a[0].size()){
         this->n = a.size() + 1;
         this->m = a[0].size() + 1;
         bit.assign(n + 1, vi(m + 1, 0));
