@@ -1,5 +1,3 @@
-int a[N];
-
 struct segment_tree{
     int seg[4 * N];
     
@@ -91,3 +89,89 @@ struct lazy_segment_tree{
         return get(id << 1, l, mid, u, v) + get(id << 1 | 1, mid + 1, r, u, v);
     }
 } it2;
+
+struct segment_tree_2d{
+    int seg[4 * N][4 * N];
+    
+    void build_y(int idx, int lx, int rx, int idy, int ly, int ry){
+        if (ly == ry){
+            if (lx == rx){
+                seg[idx][idy] = a[lx][ly];
+                return;
+            }
+            seg[idx][idy] = seg[idx << 1][idy] + seg[idx << 1 | 1][idy];
+            return;
+        }
+        int midy = (ly + ry) >> 1;
+        build_y(idx, lx, rx, idy << 1, ly, midy);
+        build_y(idx, lx, rx, idy << 1 | 1, midy + 1, ry);
+        seg[idx][idy] = seg[idx][idy << 1] + seg[idx][idy << 1 | 1];
+    }
+    
+    void build_x(int idx, int lx, int rx){
+        if (lx == rx){
+            build_y(idx, lx, rx, 1, 1, m);
+            return;
+        }
+        int midx = (lx + rx) >> 1;
+        build_x(idx << 1, lx, midx);
+        build_x(idx << 1 | 1, midx + 1, rx);
+        build_y(idx, lx, rx, 1, 1, m);
+    }
+    
+    void update_y(int idx, int lx, int rx, int idy, int ly, int ry, int x, int y, int val){
+        if (y < ly || ry < y){
+            return;
+        }
+        if (ly == ry){
+            if (lx == rx){
+                seg[idx][idy] += val;
+                return;
+            }
+            seg[idx][idy] = seg[idx << 1][idy] + seg[idx << 1 | 1][idy];
+            return;
+        }
+        int midy = (ly + ry) >> 1;
+        update_y(idx, lx, rx, idy << 1, ly, midy, x, y, val);
+        update_y(idx, lx, rx, idy << 1 | 1, midy + 1, ry, x, y, val);
+        seg[idx][idy] = seg[idx][idy << 1] + seg[idx][idy << 1 | 1];
+    }
+    
+    void update_x(int idx, int lx, int rx, int x, int y, int val){
+        if (x < lx || rx < x){
+            return;
+        }
+        if (lx == rx){
+            update_y(idx, lx, rx, 1, 1, m, x, y, val);
+            return;
+        }
+        int midx = (lx + rx) >> 1;
+        update_x(idx << 1, lx, midx, x, y, val);
+        update_x(idx << 1 | 1, midx + 1, rx, x, y, val);
+        update_y(idx, lx, rx, 1, 1, m, x, y, val);
+    }
+    
+    int get_y(int idx, int lx, int rx, int idy, int ly, int ry, int ux, int vx, int uy, int vy){
+        if (vy < ly || ry < uy){
+            return 0;
+        }
+        if (uy <= ly && ry <= vy){
+            return seg[idx][idy];
+        }
+        int midy = (ly + ry) >> 1;
+        return get_y(idx, lx, rx, idy << 1, ly, midy, ux, vx, uy, vy) +
+               get_y(idx, lx, rx, idy << 1 | 1, midy + 1, ry, ux, vx, uy, vy);
+    }
+    
+    int get_x(int idx, int lx, int rx, int ux, int vx, int uy, int vy){
+        if (vx < lx || rx < ux){
+            return 0;
+        }
+        if (ux <= lx && rx <= vx){
+            return get_y(idx, lx, rx, 1, 1, m, ux, vx, uy, vy);
+        }
+        int midx = (lx + rx) >> 1;
+        return get_x(idx << 1, lx, midx, ux, vx, uy, vy) +
+               get_x(idx << 1 | 1, midx + 1, rx, ux, vx, uy, vy);
+    }
+} it3;
