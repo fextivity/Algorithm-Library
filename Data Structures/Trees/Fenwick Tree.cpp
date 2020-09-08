@@ -77,3 +77,68 @@ struct fenwick_tree_2d{
         }
     }
 } bit2;
+
+int n, m;
+
+void update(int ux, int uy, int vx, int vy, int val){
+    int tmp, lx, ly, rx, ry;
+    //=========================================================================================
+    tmp = val; lx = ux; ly = uy; rx = vx; ry = vy;
+    a.add(lx, ly, tmp);
+    a.add(lx, ry + 1, -tmp);
+    a.add(rx + 1, ly, -tmp);
+    a.add(rx + 1, ry + 1, tmp);
+    //=========================================================================================
+    tmp = -val * (uy - 1); lx = ux; ly = uy; rx = vx; ry = vy;
+    b.add(lx, ly, tmp);
+    b.add(lx, ry + 1, -tmp);
+    b.add(rx + 1, ly, -tmp);
+    b.add(rx + 1, ry + 1, tmp);
+    tmp = val * (vy - uy + 1); lx = ux; ly = vy + 1; rx = vx; ry = m;
+    b.add(lx, ly, tmp);
+    b.add(lx, ry + 1, -tmp);
+    b.add(rx + 1, ly, -tmp);
+    b.add(rx + 1, ry + 1, tmp);
+    //=========================================================================================
+    tmp = -val * (ux - 1); lx = ux; ly = uy; rx = vx; ry = vy;
+    c.add(lx, ly, tmp);
+    c.add(lx, ry + 1, -tmp);
+    c.add(rx + 1, ly, -tmp);
+    c.add(rx + 1, ry + 1, tmp);
+    tmp = val * (vx - ux + 1); lx = vx + 1; ly = uy; rx = n; ry = vy;
+    c.add(lx, ly, tmp);
+    c.add(lx, ry + 1, -tmp);
+    c.add(rx + 1, ly, -tmp);
+    c.add(rx + 1, ry + 1, tmp);
+    //=========================================================================================
+    tmp = val * (ux - 1) * (uy - 1); lx = ux; ly = uy; rx = vx; ry = vy;
+    d.add(lx, ly, tmp);
+    d.add(lx, ry + 1, -tmp);
+    d.add(rx + 1, ly, -tmp);
+    d.add(rx + 1, ry + 1, tmp);
+    tmp = -val * (ux - 1) * (vy - uy + 1); lx = ux; ly = vy + 1; rx = vx; ry = m;
+    d.add(lx, ly, tmp);
+    d.add(lx, ry + 1, -tmp);
+    d.add(rx + 1, ly, -tmp);
+    d.add(rx + 1, ry + 1, tmp);
+    tmp = -val * (vx - ux + 1) * (uy - 1); lx = vx + 1; ly = uy; rx = n; ry = vy;
+    d.add(lx, ly, tmp);
+    d.add(lx, ry + 1, -tmp);
+    d.add(rx + 1, ly, -tmp);
+    d.add(rx + 1, ry + 1, tmp);
+    tmp = val * (vx - ux + 1) * (vy - uy + 1); lx = vx + 1; ly = vy + 1; rx = n; ry = m;
+    d.add(lx, ly, tmp);
+    d.add(lx, ry + 1, -tmp);
+    d.add(rx + 1, ly, -tmp);
+    d.add(rx + 1, ry + 1, tmp);
+    //=========================================================================================
+}
+
+int get(int x, int y){
+    if (x <= 0 || y <= 0) return 0;
+    return x * y * a.sum(x, y) + x * b.sum(x, y) + y * c.sum(x, y) + d.sum(x, y);
+}
+
+int get(int ux, int uy, int vx, int vy){
+    return get(vx, vy) - get(vx, uy - 1) - get(ux - 1, vy) + get(ux - 1, uy - 1);
+}
