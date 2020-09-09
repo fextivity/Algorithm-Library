@@ -175,3 +175,59 @@ struct segment_tree_2d{
                get_x(idx << 1 | 1, midx + 1, rx, ux, vx, uy, vy);
     }
 } it3;
+
+struct persistent_segment_tree{
+    struct Vertex{
+        int idxl, idxr;
+        int val;
+        
+        Vertex(int idxl = -1, int idxr = -1, int val = 0): idxl(idxl), idxr(idxr), val(val) {}
+    } seg[(4 + M) * N];
+    
+    vector <int> root;
+    
+    int segidx = 0;
+    
+    int build(int l, int r){
+        if (l == r){
+            int curidx = ++segidx;
+            seg[curidx] = Vertex(-1, -1, a[l]);
+            return curidx;
+        }
+        int mid = (l + r) >> 1;
+        int lidx = build(l, mid);
+        int ridx = build(mid + 1, r);
+        int curidx = ++segidx;
+        seg[curidx] = Vertex(lidx, ridx, max(seg[lidx].val, seg[ridx].val));
+        return curidx;
+    }
+    
+    int update(int idx, int l, int r, int i, int val){
+        if (i < l || r < i){
+            return idx;
+        }
+        if (l == r){
+            int curidx = ++segidx;
+            seg[curidx] = Vertex(-1, -1, val);
+            return curidx;
+        }
+        int mid = (l + r) >> 1;
+        int lidx = update(seg[idx].idxl, l, mid, i, val);
+        int ridx = update(seg[idx].idxr, mid + 1, r, i, val);
+        int curidx = ++segidx;
+        seg[curidx] = Vertex(lidx, ridx, max(seg[lidx].val, seg[ridx].val));
+        return curidx;
+    }
+    
+    int get(int idx, int l, int r, int u, int v){
+        if (v < l || r < u){
+            return 0;
+        }
+        if (u <= l && r <= v){
+            return seg[idx].val;
+        }
+        int mid = (l + r) >> 1;
+        int ans = max(get(seg[idx].idxl, l, mid, u, v), get(seg[idx].idxr, mid + 1, r, u, v));
+        return ans;
+    }
+} it4;
