@@ -112,8 +112,6 @@ tree <T, null_type, less_equal <T>, rb_tree_tag, tree_order_statistics_node_upda
 template <typename Key, typename T> using ordered_multimap =
 tree <Key, T, less_equal <Key>, rb_tree_tag, tree_order_statistics_node_update>;
 
-#define pque priority_queue
-#define mts multiset
 #define y0 _y0_
 #define y1 _y1_
 #define div divi
