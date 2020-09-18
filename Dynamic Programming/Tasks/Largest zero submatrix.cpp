@@ -15,7 +15,7 @@ int zero_matrix(){
             while (!st.empty() && d[st.top()] <= d[j]){
                 st.pop();
             }
-            d1[j] = (st.empty() ? -1 : st.top());
+            d1[j] = (st.empty() ? 0 : st.top());
             st.push(j);
         }
         while (!st.empty()){
