@@ -4,6 +4,7 @@ vpii adj[N];
 vi cycle;
 
 bool find_negative_cycle(){
+    msetinf(dist);
     msetn1(par);
     int cycle_start;
     ForE(cnt, 1, n){
