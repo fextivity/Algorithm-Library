@@ -3,7 +3,7 @@ int dist[N];
 vpii adj[N];
 
 void dijkstra(int u){
-    pque <pii, vpii, greater <pii > > pq;
+    priority_queue <pii, vpii, greater <pii > > pq;
     msetinf(dist);
     pq.push({0, u});
     dist[u] = 0;
