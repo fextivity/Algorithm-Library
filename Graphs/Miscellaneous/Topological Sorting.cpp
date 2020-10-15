@@ -1,7 +1,7 @@
 int n;
 vi adj[N];
 bool ck[N];
-vi toposort;
+vi topo;
 
 void dfs(int u){
     ck[u] = true;
@@ -10,7 +10,7 @@ void dfs(int u){
             dfs(v);
         }
     }
-    toposort.pb(u);
+    topo.pb(u);
 }
 
 void toposort(){
@@ -20,5 +20,5 @@ void toposort(){
             dfs(i);
         }
     }
-    reverse(bend(toposort));
+    reverse(bend(topo));
 }
