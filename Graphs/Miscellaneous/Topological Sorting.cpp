@@ -14,6 +14,7 @@ void dfs(int u){
 }
 
 void toposort(){
+    mset(ck);
     ForE(i, 1, n){
         if (!ck[i]){
             dfs(i);
