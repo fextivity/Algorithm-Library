@@ -1,4 +1,4 @@
-int n;
+int n, m;
 vi adj[N], radj[N];
 bool ck[N];
 vi topo, cpn;
@@ -37,7 +37,7 @@ void dfs2(int u){
 void find_scc(){
     toposort();
     mset(ck);
-    FordE(i, n - 1, 0){
+    For(i, 0, n){
         if (!ck[topo[i]]){
             cpn.clear();
             dfs2(topo[i]);
