@@ -28,8 +28,8 @@ void dfs2(int u){
     ck[u] = true;
     cpn.pb(u);
     Fora(v, adj[u]){
-        if (!ck[u]){
-            dfs(u);
+        if (!ck[v]){
+            dfs2(v);
         }
     }
 }
@@ -38,9 +38,9 @@ void find_scc(){
     toposort();
     mset(ck);
     FordE(i, n - 1, 0){
-        if (!ck[i]){
+        if (!ck[topo[i]]){
             cpn.clear();
-            dfs2(i);
+            dfs2(topo[i]);
             scc.pb(cpn);
         }
     }
