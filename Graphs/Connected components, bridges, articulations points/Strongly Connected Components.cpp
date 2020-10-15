@@ -1,5 +1,5 @@
 int n;
-vi adj[N];
+vi adj[N], radj[N];
 bool ck[N];
 vi topo, cpn;
 vvi scc;
@@ -27,7 +27,7 @@ void toposort(){
 void dfs2(int u){
     ck[u] = true;
     cpn.pb(u);
-    Fora(v, adj[u]){
+    Fora(v, radj[u]){
         if (!ck[v]){
             dfs2(v);
         }
